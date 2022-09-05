@@ -29,7 +29,7 @@ namespace ProductAPI.Repositories
             var product = await _repository.Get(x => x.Id == id, cancellationToken);
 
             if (product == null)
-                throw new BadHttpRequestException("");
+                throw new BadHttpRequestException("Product not found");
 
             return product;
         }
@@ -62,8 +62,9 @@ namespace ProductAPI.Repositories
         public async Task Delete(Guid id, CancellationToken cancellationToken = default)
         {
             var productToDelete = await GetById(id, cancellationToken);
+            productToDelete.IsDeleted = true;
 
-            await _repository.Remove(productToDelete, cancellationToken);
+            await _repository.Update(productToDelete, cancellationToken);
         }
     }
 }

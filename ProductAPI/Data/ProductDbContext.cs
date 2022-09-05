@@ -32,9 +32,6 @@ namespace ProductAPI.Data
                         entry.Entity.CreatedDate = DateTime.UtcNow;
                         entry.Entity.IsDeleted = false;
                         break;
-                    case EntityState.Modified:
-                        entry.Entity.IsDeleted = false;
-                        break;
                     case EntityState.Deleted:
                         entry.Entity.IsDeleted = true;
                         break;

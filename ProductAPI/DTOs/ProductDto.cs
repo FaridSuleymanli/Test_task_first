@@ -21,6 +21,9 @@ namespace ProductAPI.DTOs
                 .NotNull().WithMessage("Name field cannot be null")
                 .Matches(@"^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$")
                 .WithMessage("Characters are not allowed");
+
+            RuleFor(p => p.Price)
+                .GreaterThan(0).WithMessage("Price cannot be less than or equal to zero");
         }
     }
 }

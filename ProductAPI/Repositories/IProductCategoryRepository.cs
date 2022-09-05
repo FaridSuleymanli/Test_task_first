@@ -12,7 +12,7 @@ namespace ProductAPI.Repositories
         Task<List<ProductCategory>> GetAll(CancellationToken cancellationToken = default);
     
         Task<ProductCategory> GetById(Guid id, CancellationToken cancellationToken = default);
-    
+
         Task Create(ProductCategoryDto productCategoryDto, CancellationToken cancellationToken = default);
 
         Task Update(Guid id, ProductCategoryDto productCategoryDto, CancellationToken cancellationToken = default);
