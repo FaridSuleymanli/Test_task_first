@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using ProductAPI.Common;
 using ProductAPI.Data;
 using ProductAPI.DTOs;
+using ProductAPI.Exceptions;
 using ProductAPI.Models;
 
 namespace ProductAPI.Repositories
@@ -29,7 +30,7 @@ namespace ProductAPI.Repositories
             var productCategory = await _repository.Get(x => x.Id == id, cancellationToken);
 
             if (productCategory == null)
-                throw new BadHttpRequestException("");
+                throw new NotFoundException();
 
             return productCategory;
         }
